@@ -1,0 +1,8 @@
+{
+  "name": "kirby-webp",
+  "description": "WebP generation for Kirby",
+  "author": "S1SYPHOS <hello@twobrain.io>",
+  "version": "0.1.0",
+  "type": "kirby-plugin",
+  "license": "MIT"
+}
