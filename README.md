@@ -1,7 +1,7 @@
 # Kirby WebP
 [![Release](https://img.shields.io/github/release/S1SYPHOS/kirby-webp.svg?color="brightgreen")](https://github.com/S1SYPHOS/kirby-webp/releases) [![License](https://img.shields.io/github/license/S1SYPHOS/kirby-webp.svg)](https://github.com/S1SYPHOS/kirby-webp/blob/master/LICENSE) [![Issues](https://img.shields.io/github/issues/S1SYPHOS/kirby-webp.svg)](https://github.com/S1SYPHOS/kirby-webp/issues)
 
-This plugin generates `.webp` images alongside your uploaded `.jp(e)g` & `.png` versions - so **you** don't have to!
+This plugin generates WebP images alongside your uploaded JPGs & PNGs - so **you** don't have to.
 
 **Table of contents**
 - [1. What is it good for?](#whats-is-it-good-for)
@@ -11,7 +11,7 @@ This plugin generates `.webp` images alongside your uploaded `.jp(e)g` & `.png` 
 - [5. Credits / License](#credits--license)
 
 ## What is it good for?
-Absolutely .. smaller image size!
+Absolutely .. smaller image size! (TODO)
 
 ## Getting started
 Use one of the following methods to install & use `kirby-webp`:
@@ -40,7 +40,7 @@ c::set('plugin.kirby-webp', true);
 After uploading some images, you are now officially ready to serve their newly generated WebP versions.
 
 ### Apache
-If you're using [Apache](http://httpd.apache.org/) as your webserver, add the following lines to your `.htaccess` (right after `RewriteBase`):
+If you're using [Apache](http://httpd.apache.org/) as your webserver, add the following lines to your `.htaccess`:
 
 ```text
 <IfModule mod_rewrite.c>
@@ -91,12 +91,12 @@ server {
 ```
 
 ## Troubleshooting
-Despite stating that `An unexpected error occurred`, WebP generation after renaming / updating images works - `panel.file.replace` doesn't work at all .. PRs are always welcome :champagne:
+Despite stating that `An unexpected error occurred`, WebP generation after renaming / updating images works - `replace` doesn't work at all .. PRs are always welcome :champagne:
 
-Because of that, only `panel.file.upload` is included by default. If you wish to investigate this further or don't care too much about the errror, go head with `c::set('plugin.webp.actions', ['upload', 'update', 'replace']);` in your `config.php`.
+Because of that, only `upload` is included by default. If you wish to investigate this further and / or don't care too much about the errror, go ahead with `c::set('plugin.webp.actions', ['upload', 'update', 'rename', 'replace']);` in your `config.php`.
 
 ## Credits / License
-`kirby-webp` is based on Bjørn Rosell's `convert-webp` library. It is licensed under the [MIT License](LICENSE), but **using Kirby in production** requires you to [buy a license](https://getkirby.com/buy). Are you ready for the [next step](https://getkirby.com/next)?
+`kirby-webp` is based on Bjørn Rosell's [PHP library](https://github.com/rosell-dk/webp-convert) `convert-webp` library. It is licensed under the [MIT License](LICENSE), but **using Kirby in production** requires you to [buy a license](https://getkirby.com/buy). Are you ready for the [next step](https://getkirby.com/next)?
 
 ## Special Thanks
 I'd like to thank everybody that's making great software - you people are awesome. Also I'm always thankful for feedback and bug reports :)
