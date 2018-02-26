@@ -16,6 +16,12 @@ Absolutely .. smaller image size!
 ## Getting started
 Use one of the following methods to install & use `kirby-webp`:
 
+### Composer
+
+```text
+composer require S1SYPHOS/kirby-webp
+```
+
 ### Git submodule
 
 If you know your way around Git, you can download this plugin as a [submodule](https://github.com/blog/2104-working-with-submodules):
@@ -34,7 +40,7 @@ Activate the plugin with the following line in your `config.php`:
 
 ```text
 c::set('plugin.kirby-webp', true);
-``` 
+```
 
 ## Configuration
 After uploading some images, you are now officially ready to serve their newly generated WebP versions.
@@ -69,10 +75,10 @@ If you're using [Apache](http://httpd.apache.org/) as your webserver, add the fo
 If you're using [NGINX](https://nginx.org/en/) as your webserver, add the following lines to your virtual host setup (for more information, go [here](https://github.com/uhop/grunt-tight-sprite/wiki/Recipe:-serve-WebP-with-nginx-conditionally) or [there](https://optimus.keycdn.com/support/configuration-to-deliver-webp)):
 
 ```text
-// First, make sure that NGINX' `mime.types` file includes 'image/webp webp' 
+// First, make sure that NGINX' `mime.types` file includes 'image/webp webp'
 include /etc/nginx/mime.types;
 
-// Checking if HTTP's `ACCEPT` header contains 'webp' 
+// Checking if HTTP's `ACCEPT` header contains 'webp'
 map $http_accept $webp_suffix {
   default "";
   "~*webp" ".webp";
