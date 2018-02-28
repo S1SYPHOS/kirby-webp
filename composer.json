@@ -5,6 +5,10 @@
     {
       "type": "vcs",
       "url": "https://github.com/S1SYPHOS/webp-convert"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/rosell-dk/webp-convert"
     }
   ],
   "require": {
