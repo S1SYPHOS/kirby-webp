@@ -19,7 +19,7 @@ Use one of the following methods to install & use `kirby-webp`:
 ### Composer
 
 ```text
-composer require S1SYPHOS/kirby-webp
+composer require S1SYPHOS/kirby-webp:dev-composer
 ```
 
 ### Git submodule
