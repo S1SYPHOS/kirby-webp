@@ -1,4 +1,6 @@
 {
+  "name": "S1SYPHOS/kirby-webp",
+  "type": "kirby-plugin",
   "repositories": [
     {
       "type": "vcs",
@@ -6,6 +8,7 @@
     }
   ],
   "require": {
-    "rosell-dk/webp-convert": "dev-master"
+    "composer/installers": "~1.0",
+    "rosell-dk/webp-convert": "dev-composer"
   }
 }
