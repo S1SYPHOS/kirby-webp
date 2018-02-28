@@ -1,6 +1,7 @@
 {
   "name": "s1syphos/kirby-webp",
   "type": "kirby-plugin",
+  "minimum-stability": "dev",
   "repositories": [
     {
       "type": "vcs",
