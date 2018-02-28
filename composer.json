@@ -9,6 +9,6 @@
   ],
   "require": {
     "composer/installers": "~1.0",
-    "rosell-dk/webp-convert": "dev-composer"
+    "rosell-dk/webp-convert": "dev-master"
   }
 }
