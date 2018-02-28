@@ -1,14 +1,11 @@
 {
   "name": "s1syphos/kirby-webp",
   "type": "kirby-plugin",
+  "minimum-stability": "dev",
   "repositories": [
     {
       "type": "vcs",
       "url": "https://github.com/S1SYPHOS/webp-convert"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/rosell-dk/webp-convert"
     }
   ],
   "require": {
