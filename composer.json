@@ -1,15 +1,10 @@
 {
   "name": "s1syphos/kirby-webp",
+  "description": "WebP generation for Kirby",
   "type": "kirby-plugin",
-  "minimum-stability": "dev",
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/S1SYPHOS/webp-convert"
-    }
-  ],
+  "license": "MIT",
   "require": {
     "composer/installers": "~1.0",
-    "rosell-dk/webp-convert": "dev-master"
+    "s1syphos/webp-convert": "~0.1"
   }
 }

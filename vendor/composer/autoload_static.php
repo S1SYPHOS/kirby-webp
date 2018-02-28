@@ -4,14 +4,28 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitf7dae78fb6383af8b2674ee2baa0aadc
+class ComposerStaticIniteaca3f27914e59bca534e42219dcc996
 {
+    public static $prefixLengthsPsr4 = array (
+        'C' => 
+        array (
+            'Composer\\Installers\\' => 20,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Composer\\Installers\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers',
+        ),
+    );
+
     public static $prefixesPsr0 = array (
         'W' => 
         array (
             'WebPConvert' => 
             array (
-                0 => __DIR__ . '/..' . '/rosell-dk/webp-convert',
+                0 => __DIR__ . '/..' . '/s1syphos/webp-convert',
             ),
         ),
     );
@@ -19,7 +33,9 @@ class ComposerStaticInitf7dae78fb6383af8b2674ee2baa0aadc
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixesPsr0 = ComposerStaticInitf7dae78fb6383af8b2674ee2baa0aadc::$prefixesPsr0;
+            $loader->prefixLengthsPsr4 = ComposerStaticIniteaca3f27914e59bca534e42219dcc996::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticIniteaca3f27914e59bca534e42219dcc996::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticIniteaca3f27914e59bca534e42219dcc996::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }
