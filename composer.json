@@ -3,14 +3,8 @@
   "description": "WebP generation for Kirby",
   "type": "kirby-plugin",
   "license": "MIT",
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/rosell-dk/webp-convert"
-    }
-  ],
   "require": {
-    "rosell-dk/webp-convert": "dev-master"
+    "rosell-dk/webp-convert": "~0.1"
   }
 }
 
