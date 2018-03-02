@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'WebPConvert' => array($vendorDir . '/s1syphos/webp-convert'),
+    'WebPConvert' => array($vendorDir . '/rosell-dk/webp-convert'),
 );
