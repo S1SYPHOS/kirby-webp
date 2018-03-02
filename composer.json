@@ -5,7 +5,7 @@
   "license": "MIT",
   "require": {
     "composer/installers": "~1.0",
-    "s1syphos/webp-convert": "~0.1"
+    "rosell-dk/webp-convert": "~0.1"
   }
 }
 
