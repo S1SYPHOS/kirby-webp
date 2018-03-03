@@ -1,67 +1,53 @@
 <?php
 
-// namespace S1SYPHOS\WEBP;
+ namespace Kirby\Plugins\WebP;
 
-// use c;
-// use WebPConvert;
+ use c;
+ use WebPConvert;
 
-class Settings {
+/*
+ * TODO:
+ *
+ * $kirby->option('thumb.quality') && 'thumbs.driver'
+ *
+ */
 
-  /**
-   * Returns the default options for `kirby-webp`
-   *
-   * @return array
-   */
+class Convert {
 
-  public static function __callStatic($name, $args) {
+  private $quality;
+  private $strip;
+  private $serve;
+  private $log;
+  private $converters;
 
-    // Set prefix
-    $prefix = 'plugin.kirby-webp.';
-
-    // Set config names and fallbacks as settings
-    $settings = [
-      // TODO: $kirby->option('thumb.quality') ?
-      'actions'             => ['upload'],
-      'quality'             => 90, // Desired WebP compression quality
-      'stripMetadata'       => TRUE,
-      'serveConverted'      => FALSE,
-      'serveOriginalOnFail' => TRUE,
-      'preferredConverters' => ['gd', 'webp', 'imagick'] // TODO: include 'thumbs.driver'
-    ];
-
-    // If config settings exist, return the config with fallback
-    if(isset($settings) && array_key_exists($name, $settings)) {
-      return c::get($prefix . $name, $settings[$name]);
-    }
+  public function __construct() {
+    $this->quality = c::get('plugin.kirby-webp.quality', 90);
+    $this->strip = c::get('plugin.kirby-webp.stripMetadata', TRUE);
+    $this->serve = c::get('plugin.kirby-webp.converters', TRUE);
+    $this->log = c::get('plugin.kirby-webp.serveOriginalOnFail', TRUE);
+    $this->converters = c::get('plugin.kirby-webp.converters', ['gd', 'cwebp']);
   }
-}
+  
+  public function generateWebP($file) {
 
-foreach (settings::actions() as $action) {
-  kirby()->hook('panel.file.' . $action, 'generateWebP');
-}
+    try {
+      // Checking file type since only images are processed
+      if ($file->type() == 'image') {
 
-function generateWebP($file) {
+        // WebPConvert options
+        $input   = $file->dir() . '/' . $file->filename();
+        $output  = $file->dir() . '/' . $file->name() . '.webp';
 
-  try {
+        WebPConvert::$serve_original_image_on_fail = $this->serve;
+        WebPConvert::$serve_converted_image = $this->log;
+        WebPConvert::set_preferred_converters($this->converters);
+        // WebPConvert::$debug = FALSE;
 
-    // Checking file type since only images are processed
-    if ($file->type() == 'image') {
-
-      // Defining image-related options
-      $input   = $file->dir() . '/' . $file->filename();
-      $output  = $file->dir() . '/' . $file->name() . '.webp';
-      $quality = settings::quality();
-      $strip   = settings::stripMetadata();
-
-      // Defining WebPConvert-related options
-      WebPConvert::$serve_converted_image = settings::serveConverted();
-      WebPConvert::$serve_original_image_on_fail = settings::serveOriginalOnFail();
-      WebPConvert::set_preferred_converters(settings::preferredConverters());
-      
-      // Generating WebP image & placing it alongside the original version
-      WebPConvert::convert($input, $output, $quality, $strip);
+        // Generating WebP image & placing it alongside the original version
+        WebPConvert::convert($input, $output, $this->quality, $this->strip);
+      }
+    } catch (Exception $e) {
+      return response::error($e->getMessage());
     }
-  } catch (Exception $e) {
-    return response::error($e->getMessage());
   }
 }
