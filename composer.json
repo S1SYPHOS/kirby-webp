@@ -3,8 +3,14 @@
   "description": "WebP generation for Kirby",
   "type": "kirby-plugin",
   "license": "MIT",
+  "authors": [
+    {
+      "name": "Martin Folkers",
+      "homepage": "https://twobrain.io",
+      "role": "Project Author"
+    }
+  ]
   "require": {
     "rosell-dk/webp-convert": "~0.1"
   }
 }
-
