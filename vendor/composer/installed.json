@@ -1,0 +1,43 @@
+[
+    {
+        "name": "rosell-dk/webp-convert",
+        "version": "0.1.0",
+        "version_normalized": "0.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/rosell-dk/webp-convert.git",
+            "reference": "a6498e29cff4c833d412bb3f422a1288d3cb01be"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/rosell-dk/webp-convert/zipball/a6498e29cff4c833d412bb3f422a1288d3cb01be",
+            "reference": "a6498e29cff4c833d412bb3f422a1288d3cb01be",
+            "shasum": ""
+        },
+        "time": "2018-03-02T19:10:41+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "WebPConvert": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Martin Folkers",
+                "homepage": "https://twobrain.io",
+                "role": "Collaborator"
+            },
+            {
+                "name": "Bjørn Rosell",
+                "homepage": "https://www.bitwise-it.dk/contact",
+                "role": "Project Author"
+            }
+        ],
+        "description": "Convert jpeg/png to webp with PHP"
+    }
+]
