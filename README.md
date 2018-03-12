@@ -11,7 +11,15 @@ This plugin generates WebP images alongside your uploaded JPGs & PNGs - so **you
 - [5. Credits / License](#credits--license)
 
 ## What is it good for?
-Absolutely .. smaller image size! (TODO)
+Absolutely .. smaller image size:
+
+> WebP is a method of lossy and lossless compression that can be used on a large variety of photographic, translucent and graphical images found on the web. The degree of lossy compression is adjustable so a user can choose the trade-off between file size and image quality. WebP typically achieves an average of 30% more compression than JPEG and JPEG 2000, without loss of image quality (see [Comparative Study](https://developers.google.com/speed/webp/docs/c_study)).
+>
+> [Google Developers](https://developers.google.com/speed/webp/faq)
+
+Current [browser support](https://caniuse.com/#feat=webp) for WebP images is decent (Chrome, Opera & most mobile browsers), although heavily depending on your target region (ranging from North America (60%) & Europe (65%) to over 80% in Africa & South America).
+
+For further information, including criticism, check out its [Wikipedia article](https://en.wikipedia.org/wiki/WebP). That being said, another interesting approach gearing towards the replacement of JPEG is Fabrice Bellard's "[Better Portable Graphics](https://bellard.org/bpg)" (BPG) format.
 
 ## Getting started
 Use one of the following methods to install & use `kirby-webp`:
