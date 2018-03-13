@@ -13,7 +13,7 @@
 if(!c::get('plugin.kirby-webp')) return;
 
 // Initialising composer's autoloader
-require_once  __DIR__ . DS . 'vendor' . DS . 'autoload.php';
+require_once __DIR__ . DS . 'vendor' . DS . 'autoload.php';
 
 // Loading settings & core
 function webp() {
