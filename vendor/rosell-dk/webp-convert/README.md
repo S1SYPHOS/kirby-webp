@@ -9,10 +9,10 @@ Currently the following converters are available:
 
 | Converter            | Method                                   | Summary                                              |
 | -------------------- | ---------------------------------------- | ---------------------------------------------------- |
-| [imagick](#imagick)  | Uses imagick extension                   | Best converter, but rarely available on shared hosts |
-| [gd](#gd)            | Uses gd extension                        | Fast, but not able to do lossless encoding           |
+| [imagick](#imagick)  | Uses Imagick extension                   | Best converter, but rarely available on shared hosts |
+| [gd](#gd)            | Uses GD Graphics extension               | Fast, but unable to do lossless encoding             |
 | [cwebp](#cwebp)      | Calls cwebp binary directly              | Great, but requires ```exec()```                     |
-| [ewww](#ewww)        | Calls EWWW Image Optimizer cloud service | Works on *almost* any shared webhost, slow, cheap, requires key |
+| [ewww](#ewww)        | Calls EWWW Image Optimizer cloud service | Works on *almost* any shared host; slow, cheap, requires key |
 
 ## Usage
 
@@ -23,10 +23,10 @@ include( __DIR__ . '/WebPConvert.php');
 $source = $_SERVER['DOCUMENT_ROOT'] . '/images/subfolder/logo.jpg';
 $destination = $_SERVER['DOCUMENT_ROOT'] . '/images/subfolder/logo.jpg.webp';
 $quality = 90;
-$strip_metadata = TRUE;
+$strip_metadata = true;
 
-WebPConvert::$serve_converted_image = TRUE;
-WebPConvert::$serve_original_image_on_fail = TRUE;
+WebPConvert::$serve_converted_image = true;
+WebPConvert::$serve_original_image_on_fail = true;
 WebPConvert::set_preferred_converters(array('imagick','cwebp'));
 WebPConvert::convert($source, $destination, $quality, $strip_metadata);
 ```
@@ -45,14 +45,13 @@ WebPConvert::convert($source, $destination, $quality, $strip_metadata);
 Setting this manipulates the default order in which the converters are tried. If you for example set it to "cwebp", it means that you want "cwebp" to be tried first. You can specify several favourite converters. Setting it to "imagick,cwebp" will put imagick to the top of the list and cwebp will be the next converter to try, if imagick fails. The option will not remove any converters from the list, only change the order.
 
 *WebPConvert::$serve_converted_image* (bool)\
-If TRUE, the converted image will be output (served). Otherwise the script will produce text output about the convertion process.
+If `true`, the converted image will be output (served). Otherwise the script will produce text output about the convertion process.
 
 *WebPConvert::$serve_original_image_on_fail* (bool)\
-When WebPConvert is told to serve an image, but all converters fails to convert, WebPConvert looks at this option to decide what to do. If set to TRUE, WebPConvert will serve the original image. If set to FALSE, WebPConvert will generate an image with the error message. TRUE is probably a good choice on production servers while FALSE is probably a good choice on development servers.
+When WebPConvert is told to serve an image, but all converters fails to convert, WebPConvert looks at this option to decide what to do. If set to `true`, WebPConvert will serve the original image. If set to `false`, WebPConvert will generate an image with the error message. `true` is probably a good choice on production servers while `false` is probably a good choice on development servers.
 
 
 ## Converters
-
 Each "method" of converting an image to webp are implemented as a separate converter. *WebPConvert* autodetects the converters by scanning the "converters" directory, so it is easy to add new converters, and safe to remove existing ones.
 
 A converter simply consists of a convert function, which takes same arguments as *WebPConvert::convert*. The job of the converter is to convert *$source* to WebP and save it at *$destination*, preferrably taking *$quality* and *$strip_metadata* into account. It however relies on *WebPConvert* to take care of the following common tasks:
@@ -87,7 +86,7 @@ The converter supports:
 You can configure the converter by defining any of the following constants:
 
 *WEBPCONVERT_IMAGICK_METHOD*: This parameter controls the trade off between encoding speed and the compressed file size and quality. Possible values range from 0 to 6. When higher values are used, the encoder will spend more time inspecting additional encoding possibilities and decide on the quality gain. Lower value can result in faster processing time at the expense of larger file size and lower compression quality. Default value is 6 (higher than the default value of the cwebp command, which is 4).\
-*WEBPCONVERT_IMAGICK_LOW_MEMORY*: The low memory option will make the encoding slower and the output slightly different in size and distortion. This flag is only effective for methods 3 and up. It is *on* by default. To turn it off, set the constant to ```FALSE```\
+*WEBPCONVERT_IMAGICK_LOW_MEMORY*: The low memory option will make the encoding slower and the output slightly different in size and distortion. This flag is only effective for methods 3 and up. It is *on* by default. To turn it off, set the constant to `false`\
 
 
 In order to get imagick with WebP on Ubuntu 16.04, you currently need to:
@@ -109,14 +108,12 @@ The converter does not support copying metadata.
 
 Converter options:
 
-*WEBPCONVERT_GD_PNG*: If set to TRUE, the converter will convert PNG's even though the result will be bad.
+*WEBPCONVERT_GD_PNG*: If set to `true`, the converter will convert PNG's even though the result will be bad.
 
 
 [imagewebp](http://php.net/manual/en/function.imagewebp.php) is a function that comes with PHP (>5.5.0) *provided* that PHP has been compiled with WebP support. Due to a [bug](https://bugs.php.net/bug.php?id=66590), some versions sometimes created corrupted images. That bug can however easily be fixed in PHP (fix was released [here](https://stackoverflow.com/questions/30078090/imagewebp-php-creates-corrupted-webp-files)). However, I have experienced corrupted images *anyway* (but cannot reproduce that bug). So use this converter with caution. The corrupted images shows as completely transparent images in Google Chrome, but with correct size.
 
 To get WebP support for *gd* in PHP 5.5, PHP must be configured with the "--with-vpx-dir" flag. In PHP 7.0, php has to be configured with the "--with-webp-dir" flag [source](http://il1.php.net/manual/en/image.installation.php).
-
-
 
 #### cwebp 
 *Great, fast enough but requires exec()*
@@ -138,11 +135,9 @@ The converter supports:
 You can configure the converter by defining any of the following constants:
 
 *WEBPCONVERT_CWEBP_METHOD*: This parameter controls the trade off between encoding speed and the compressed file size and quality. Possible values range from 0 to 6. When higher values are used, the encoder will spend more time inspecting additional encoding possibilities and decide on the quality gain. Lower value can result in faster processing time at the expense of larger file size and lower compression quality. Default value is 6 (higher than the default value of the cwebp command, which is 4).\
-*WEBPCONVERT_CWEBP_LOW_MEMORY*: The low memory option will make the encoding slower and the output slightly different in size and distortion. This flag is only effective for methods 3 and up. It is *on* by default. To turn it off, set the constant to ```FALSE```
+*WEBPCONVERT_CWEBP_LOW_MEMORY*: The low memory option will make the encoding slower and the output slightly different in size and distortion. This flag is only effective for methods 3 and up. It is *on* by default. To turn it off, set the constant to `false`
 
 The cwebp command has more options, which can easily be implemented, if there is an interest. View the options [here](https://developers.google.com/speed/webp/docs/cwebp)
-
-
 
 Official precompilations are available on [here](https://developers.google.com/speed/webp/docs/precompiled). But note that our script tests the checksum of the binary before executing it. This means that you cannot just replace a binary - you will have to change the checksum hardcoded in *converters/cwebp.php* too. If you find the need to use another binary, than those that comes with this project, please write - chances are that it should be added to the project.
 
@@ -156,7 +151,6 @@ In more detail, the implementation does this:
 - It is detected whether the command succeeds or not
 
 Credits also goes to Shane regarding the code that revolves around the exec(). Most of it is a refactoring of the code in [EWWW Image Optimizer](https://ewww.io/).
-
 
 #### ewww
 *Cheap cloud service. Should work on *almost* any webhost. But slow.*
@@ -177,13 +171,9 @@ The converter supports:
 
 The cloud service supports other options, which can easily be implemented, if there is an interest. View options [here](https://ewww.io/api/)
 
-The converter could be improved by using *fsockopen* if *curl* is not available. This is however low priority as the curl extension is available on most shared hosts. PHP >= 5.5 is also widely available ([PHP 5.4 reached end of life more than a year ago](http://php.net/supported-versions.php)).
-
-
-
+The converter could be improved by using *fsockopen* if *curl* is not available. This is however low priority as the curl extension is available on most shared hosts. PHP >= 5.5 is also widely available (PHP 5.4 reached end of life [more than a year ago!](http://php.net/supported-versions.php)).
 
 ## The script
-
 *webp-convert.php* can be used to serve converted images, or just convert without serving. It accepts the following parameters in the URL:
 
 *source:*\
@@ -213,9 +203,7 @@ Enabling debug has two functions:\
 Default: "yes". Decides what action to take in the situation that (1) all converters fails to convert the image, and (2) WebPConvert is told to serve the converted image. the original image. Default action is to serve the *original* image. End-users will not notice the fail, which is good on production servers, but not on development servers. If set to "no", WebPConvert will instead generate an image containing the error message.
 
 ## WebPConvertPathHelper
-
 This helper is used by the script in order to make it accept relative urls and to operate with a "destination root". You will probably not need it, but in case you are interested, it is documented [here, on the wiki](https://github.com/rosell-dk/webp-convert/wiki/WebPConvertPathHelper)
-
 
 ## SECURITY
 TODO! - The script does not currently sanitize values.
@@ -223,9 +211,3 @@ TODO! - The script does not currently sanitize values.
 ## Roadmap
 * Sanitize
 * gd should not convert png, unless option set to do so
-
-
-
-
-
-

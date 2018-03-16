@@ -11,6 +11,6 @@
     }
   ],
   "require": {
-    "rosell-dk/webp-convert": "~0.1"
+    "rosell-dk/webp-convert": "dev-master"
   }
 }
