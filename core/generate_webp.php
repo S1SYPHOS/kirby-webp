@@ -24,7 +24,7 @@ class Convert
     {
         $this->quality = c::get('plugin.kirby-webp.quality', 90);
         $this->strip = c::get('plugin.kirby-webp.stripMetadata', true);
-        $this->serve = c::get('plugin.kirby-webp.converters', true);
+        $this->serve = c::get('plugin.kirby-webp.convertedImage', true);
         $this->log = c::get('plugin.kirby-webp.serveOriginalOnFail', true);
         $this->converters = c::get('plugin.kirby-webp.converters', ['gd', 'cwebp']);
     }
