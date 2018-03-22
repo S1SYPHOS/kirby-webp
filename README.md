@@ -7,8 +7,9 @@ This plugin generates WebP images alongside your uploaded JPGs & PNGs - so **you
 - [1. What is it good for?](#whats-is-it-good-for)
 - [2. Getting started](#getting-started)
 - [3. Configuration](#configuration)
-- [4. Troubleshooting](#troubleshooting)
-- [5. Credits / License](#credits--license)
+- [4. Options](#options)
+- [5. Troubleshooting](#troubleshooting)
+- [6. Credits / License](#credits--license)
 
 ## What is it good for?
 Absolutely .. smaller image size:
@@ -104,6 +105,18 @@ server {
 }
 ```
 
+## Options
+Change `kirby-webp` options to suit your needs:
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `plugin.kirby-webp.hooks` | Array | `['upload']` | Contains all `panel.file.*` [hooks](https://getkirby.com/docs/developer-guide/advanced/hooks) WebP generation should be applied to (allowed values are `upload`, `update`, `rename` and `replace`). |
+| `plugin.kirby-webp.quality` | Integer | `90` | Defines WebP image quality (ranging from 0 to 100). |
+| `plugin.kirby-webp.stripMetadata` | Boolean | `true` | Optionally enables / disables transfer of JPEG metadata onto the WebP image. |
+| `plugin.kirby-webp.convertedImage` | Boolean | `true` | Optionally enables / disables output of converted image (`false` results in text output about the conversion process). |
+| `plugin.kirby-webp.serveOriginalOnFail` | Boolean | `true` | Defines behavior in case all converters fail - by default, the original image will be served, whereas `false` will generate an image with the error message. |
+| `plugin.kirby-webp.converters` | Array | `['gd', 'cwebp']` | Defines the desired order of execution for all supported converters (allowed values are `imagick`, `cwebp`, `gd` and `ewww`). Note that this only changes their order, but doesn't remove any of them. |
+
 ## Troubleshooting
 Despite stating that `An unexpected error occurred`, WebP generation after renaming / updating images works - `replace` doesn't work at all .. PRs are always welcome :champagne:
 
@@ -114,4 +127,3 @@ Because of that, only `upload` is included by default. If you wish to investigat
 
 ## Special Thanks
 I'd like to thank everybody that's making great software - you people are awesome. Also I'm always thankful for feedback and bug reports :)
-
