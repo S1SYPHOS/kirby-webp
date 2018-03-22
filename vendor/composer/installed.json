@@ -1,20 +1,20 @@
 [
     {
         "name": "rosell-dk/webp-convert",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "version": "dev-patch-1",
+        "version_normalized": "dev-patch-1",
         "source": {
             "type": "git",
             "url": "https://github.com/rosell-dk/webp-convert.git",
-            "reference": "dc5f53e49b0931222fbf44476e3b99f33d15adc8"
+            "reference": "a3db6d6000b257bd3239156821129a14355022b4"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/rosell-dk/webp-convert/zipball/dc5f53e49b0931222fbf44476e3b99f33d15adc8",
-            "reference": "dc5f53e49b0931222fbf44476e3b99f33d15adc8",
+            "url": "https://api.github.com/repos/rosell-dk/webp-convert/zipball/a3db6d6000b257bd3239156821129a14355022b4",
+            "reference": "a3db6d6000b257bd3239156821129a14355022b4",
             "shasum": ""
         },
-        "time": "2018-03-05T07:59:33+00:00",
+        "time": "2018-03-15T16:38:03+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -38,7 +38,7 @@
                 "role": "Project Author"
             }
         ],
-        "description": "Convert jpeg/png to webp with PHP",
+        "description": "Convert JPEG & PNG to WebP with PHP",
         "keywords": [
             "Webp",
             "cwebp",
