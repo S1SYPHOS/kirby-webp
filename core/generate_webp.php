@@ -35,8 +35,9 @@ class Convert
             // Checking file type since only images are processed
             if ($file->type() == 'image') {
                 // WebPConvert options
-                $input   = $file->dir() . '/' . $file->filename();
-                $output  = $file->dir() . '/' . $file->name() . '.webp';
+                $path = $file->dir() . '/';
+                $input   = $path . $file->filename();
+                $output  = $path . $file->name() . '.webp';
 
                 WebPConvert::$serve_original_image_on_fail = $this->serve;
                 WebPConvert::$serve_converted_image = $this->log;
