@@ -123,7 +123,7 @@ Despite stating that `An unexpected error occurred`, WebP generation after renam
 Because of that, only `upload` is included by default. If you wish to investigate this further and / or don't care too much about the errror, go ahead with `c::set('plugin.webp.actions', ['upload', 'update', 'rename', 'replace']);` in your `config.php`.
 
 ## Credits / License
-`kirby-webp` is based on Bjørn Rosell's [PHP library](https://github.com/rosell-dk/webp-convert) `convert-webp` library. It is licensed under the [MIT License](LICENSE), but **using Kirby in production** requires you to [buy a license](https://getkirby.com/buy). Are you ready for the [next step](https://getkirby.com/next)?
+`kirby-webp` is based on Bjørn Rosell's [PHP library](https://github.com/rosell-dk/webp-convert) `webp-convert` library. It is licensed under the [MIT License](LICENSE), but **using Kirby in production** requires you to [buy a license](https://getkirby.com/buy). Are you ready for the [next step](https://getkirby.com/next)?
 
 ## Special Thanks
 I'd like to thank everybody that's making great software - you people are awesome. Also I'm always thankful for feedback and bug reports :)
