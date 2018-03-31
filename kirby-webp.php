@@ -6,26 +6,19 @@
  * @package   Kirby CMS
  * @author    S1SYPHOS <hello@twobrain.io>
  * @link      http://twobrain.io
- * @version   0.4.0
+ * @version   0.5.0
  * @license   MIT
  */
 
-if(!c::get('plugin.kirby-webp')) return;
+if (c::get('plugin.kirby-webp', false)) {
+    // Loading settings & core
+    require_once __DIR__ . DS . 'core' . DS . 'generate_webp.php';
 
-// Initialising composer's autoloader
-require_once kirby()->roots()->index() . DS . 'vendor' . DS . 'autoload.php';
+    $hooks = c::get('plugin.kirby-webp.hooks', ['upload']);
 
-// Loading settings & core
-function webp() {
-  require_once __DIR__ . DS . 'core' . DS . 'generate_webp.php';
-  return new Kirby\Plugins\WebP\Convert;
+    foreach ($hooks as $hook) {
+        kirby()->hook('panel.file.' . $hook, function ($file) {
+            (new Kirby\Plugins\WebP\Convert)->generateWebP($file);
+        });
+    }
 }
-
-$hooks = c::get('plugin.kirby-webp.hooks', ['upload']);
-
-foreach ($hooks as $hook) {
-  kirby()->hook('panel.file.' . $hook, function ($file) {
-    webp()->generateWebP($file);
-  });
-}
-
